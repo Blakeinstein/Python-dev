@@ -36,6 +36,8 @@ def check():
     for i in alive:
         count=0
         for j in alive:
+            if i==j:
+                continue
             if abs(j-i)<1.5:
                 count+=1
         if count<2 or count>3:
