@@ -27,12 +27,12 @@ def draw(alive,gridsize,total):
             print ('░',end=' ')
         if not (i+1) % gridsize:
             print()
-def sort(alive,gridsize):
-    alive.sort(key=lambda x: (x.real+1)*gridsize + x.imag)
+def sort(alive):
+    alive.sort(key=lambda x: (x.real,x.imag))
     return alive
 def succeed(sustain,reprod,alive,gridsize,total):
     alive=sustain+reprod
-    alive=sort(alive,gridsize)
+    alive=sort(alive)
     sleep(1)
     draw(alive,gridsize,total)
     check(alive,gridsize,total)
@@ -100,7 +100,7 @@ def custom():
             except ValueError:
                 print('Invalid Input, input should be an integer!')
             else:
-                alive=sort(alive,gridsize)
+                alive=sort(alive)
                 execute(alive,gridsize)    
         else:
             try:
